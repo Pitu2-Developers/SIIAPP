@@ -1,5 +1,11 @@
-import ApiRouter from './api-routes'
+import ApiRouter from './api.routes'
+import AuthRouter from './auth.routes'
 import * as KoaRouter from 'koa-router'
+
+const routers: any[] = [
+    ApiRouter,
+    AuthRouter
+]
 
 
 class Router extends KoaRouter {
@@ -18,9 +24,7 @@ class Router extends KoaRouter {
 }
 
 
-const routers: any[] = [
-    ApiRouter
-]
+
 
 
 export default new Router(routers)

@@ -1,4 +1,4 @@
-import { apiTestController } from "../controllers/api-controllers";
+import { apiTestController } from "../controllers/api.controller";
 import * as KoaRouter from 'koa-router'
 
 

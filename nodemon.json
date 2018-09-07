@@ -5,5 +5,5 @@
         "./dist",
         "node_modules"
     ],
-    "exec": "ts-node ./src/"
+    "exec": "yarn build && yarn start"
 }
