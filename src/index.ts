@@ -29,7 +29,7 @@ const cb: AsyncResultCallback<any, any> = (error, result) => {
     if (error) process.exit(1)
 
     // 
-    console.log(`Server on port http://localhost:${PORT}`);
+    console.log(`SIIAPP [API] ON  http://localhost:${PORT}`);
 }
 
 

@@ -5,8 +5,8 @@ import * as KoaRouter from 'koa-router'
 
 
 const router = new KoaRouter({ prefix: '/auth' })
-router.post('/signin', AuthControllers.signIn.bind(AuthControllers))
-router.post('/signup', AuthControllers.signUp.bind(AuthControllers))
+router.post('/signin', AuthControllers.signIn)
+router.post('/signup', AuthControllers.signUp)
 
 
 export default router
