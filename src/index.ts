@@ -1,5 +1,5 @@
 import { waterfall, AsyncResultCallback } from 'async'
-import Server from './server'
+import App from './server'
 import { connect } from './models';
 import { PORT } from './config';
 
@@ -16,7 +16,7 @@ const tasks: Function[] = [
     },
     //RUN SERVER 
     (done: Function) => {
-        Server.run()
+        App.run()
         done()
     },
 

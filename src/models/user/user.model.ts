@@ -37,6 +37,7 @@ UserSchema.pre('save', function (next: Function) {
     const user = this as IUserDocument
 
     if (!user.isModified('password')) return next()
+
     else if (user.isNew || user.isModified('password')) {
         user.password = hashPassword(user.password)
         user.avatar = tooavatar.generate_avatar({ gender: user.gender === 'M' ? 'male' : 'female' })

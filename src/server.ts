@@ -1,31 +1,39 @@
+// This is required for socket-controllers
+import 'reflect-metadata'
 import * as Koa from 'koa'
-// import {Options} from 'koa-bodyparser'
-// import * as KoaRouter from 'koa-router'
 import KoaBodyParser = require("koa-bodyparser");
-
 import { PORT } from './config'
 import router from './routes'
+import './websockets/notification.controller'
+import { createSocketServer } from 'socket-controllers'
+import { cors } from './middlewares/cors'
 
 
-
-
-class Server {
+class App {
     private port: number
     readonly app: Koa
 
     constructor(port: number) {
-        // super()
         this.app = new Koa()
 
         this.port = port
+        //INIT SOCKET.IO
+        this.configSocketIO()
+        // CONFIG KOA APP  / MIDDLEWARES
         this.setConfig()
+        // INIT KOA ROUTER 
         this.initRouter()
+    }
+
+    private configSocketIO() {
+        createSocketServer(7001)
     }
 
     //SET PLUGINS (MIDDLEWARES)
     private setConfig(): void {
         //BODY PARSER MIDDLEWARE 
         this.app.use(KoaBodyParser())
+        this.app.use(cors)
 
     }
 
@@ -47,4 +55,4 @@ class Server {
 }
 
 
-export default new Server(PORT)
+export default new App(PORT)
