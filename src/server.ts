@@ -6,7 +6,10 @@ import { PORT } from './config'
 import router from './routes'
 import './websockets/notification.controller'
 import { createSocketServer } from 'socket-controllers'
-import { cors } from './middlewares/cors'
+import { cors } from './middlewares/cors.middleware'
+
+//Logger
+const logger = require('koa-logger')
 
 
 class App {
@@ -33,8 +36,10 @@ class App {
     private setConfig(): void {
         //BODY PARSER MIDDLEWARE 
         this.app.use(KoaBodyParser())
+        //cors
         this.app.use(cors)
-
+        //logger
+        this.app.use(logger())
     }
 
     //INIT ROUTER 
@@ -49,7 +54,7 @@ class App {
 
     //RUN APP 
     public run(): void {
-        this.app.listen(this.port)
+        this.app.listen(this.port, '0.0.0.0')
     }
 
 }

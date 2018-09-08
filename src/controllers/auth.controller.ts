@@ -16,7 +16,7 @@ class AuthController {
     @autobind
     public async signIn(ctx: Context) {
         console.log(ctx.request.body);
-        ctx.body = 'AUTH CONTROLLER'
+        ctx.body = 'AUTH CONTROLLER2'
     }
 
     ///
