@@ -7,6 +7,8 @@ import router from './routes'
 import './websockets/notification.controller'
 import { createSocketServer } from 'socket-controllers'
 import { cors } from './middlewares/cors.middleware'
+//Helmet
+const helmet = require('koa-helmet')
 
 //Logger
 const logger = require('koa-logger')
@@ -40,6 +42,8 @@ class App {
         this.app.use(cors)
         //logger
         this.app.use(logger())
+        //Helmet
+        this.app.use(helmet())
     }
 
     //INIT ROUTER 

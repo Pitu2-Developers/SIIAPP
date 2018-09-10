@@ -34,13 +34,17 @@ UserSchema.methods.comparePassword = function (password: string) {
 }
 
 UserSchema.pre('save', function (next: Function) {
+
     const user = this as IUserDocument
 
-    if (!user.isModified('password')) return next()
-
-    else if (user.isNew || user.isModified('password')) {
-        user.password = hashPassword(user.password)
+    //Set avatar only when user is new 
+    if (user.isNew)
         user.avatar = tooavatar.generate_avatar({ gender: user.gender === 'M' ? 'male' : 'female' })
+
+    //  
+    if (!user.isModified('password')) return next()
+    else if (user.isNew && user.isModified('password')) {
+        user.password = hashPassword(user.password)
         next()
     }
 

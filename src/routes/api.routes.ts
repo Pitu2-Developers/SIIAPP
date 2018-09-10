@@ -1,9 +1,9 @@
-import { apiTestController } from "../controllers/api.controller";
+import ApiController from "../controllers/api.controller";
 import * as KoaRouter from 'koa-router'
 
 
 const router = new KoaRouter({ prefix: '/api' })
-router.get('/test', apiTestController)
+router.get('/test', ApiController.testing)
 
 
 export default router

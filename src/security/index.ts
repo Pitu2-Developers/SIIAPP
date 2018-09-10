@@ -45,7 +45,6 @@ export class SecurityService {
             const payload: any = decode(token, SECRET_TOKEN)
             if (payload.exp <= moment().unix())
                 return false
-
             return true
         } catch (error) {
             return false

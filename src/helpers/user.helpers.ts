@@ -12,7 +12,6 @@ export function hashPassword(password: string): string {
 export class UserHelpers {
     constructor() { }
 
-
     public createUser(data: IUserModel): Promise<IUserDocument> {
         const user: IUserDocument = new User(data)
         return user.save().then((res: IUserDocument) => res)
