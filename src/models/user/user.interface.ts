@@ -8,9 +8,9 @@ export interface IUserModel {
     lastName: string,
     gender: string,
     isActive?: boolean,
-    fullname?: string
 }
 
 export interface IUserDocument extends Document, IUserModel {
     comparePassword: (password: string) => boolean
+    fullname?: string
 }

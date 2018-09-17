@@ -23,7 +23,7 @@ class App {
 
         this.port = port
         //INIT SOCKET.IO
-        this.configSocketIO()
+        // this.configSocketIO()
         // CONFIG KOA APP  / MIDDLEWARES
         this.setConfig()
         // INIT KOA ROUTER 

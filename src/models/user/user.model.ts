@@ -1,6 +1,6 @@
 import { Schema, model, SchemaOptions } from 'mongoose'
 import { IUserDocument } from './user.interface'
-import { hashPassword } from '../../helpers/user.helpers';
+import { hashPassword } from '../../helpers/student.helper';
 import { compareSync } from 'bcrypt';
 const tooavatar = require('cartoon-avatar')
 
@@ -9,7 +9,8 @@ const options: SchemaOptions = {
     toObject: { virtuals: true },
     timestamps: true,
     versionKey: false,
-    id: false
+    id: false,
+    discriminatorKey: 'role'
 }
 
 const UserSchema: Schema = new Schema({
@@ -20,8 +21,9 @@ const UserSchema: Schema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isActive: { type: Boolean, default: false },
-
 }, options)
+
+
 
 
 UserSchema.virtual('fullname')

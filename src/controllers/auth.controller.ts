@@ -1,22 +1,28 @@
-import { Context, Request } from "koa";
-import { UserHelpers } from "../helpers/user.helpers";
-import { IUserDocument, IUserModel } from "../models/user/user.interface";
+import { Context } from "koa";
+import { StudentHelpers } from "../helpers/student.helper";
 import { SecurityService } from "../security";
 import { Container, Inject } from 'typescript-ioc'
 import autobind from 'autobind-decorator'
-
+import { IStudentModel, IStudentDocument } from "../models/student/student.interface";
+import { UserHelpers } from '../helpers/user.helper'
+import { ID, AuthResponse, Credentials } from "../types";
+import { ObjectID } from "bson";
+import { Schema } from "mongoose";
 
 class AuthController {
-    @Inject private helpers: UserHelpers
-    @Inject private securityService: SecurityService
+    @Inject private helpers: StudentHelpers;
+    @Inject private userHelpers: UserHelpers;
+    @Inject private securityService: SecurityService;
 
-    constructor() { }
+    constructor() {
+
+    }
 
     ///
     @autobind
     public async signIn(ctx: Context) {
-        console.log(ctx.request.body);
-        ctx.body = 'AUTH CONTROLLER2'
+        const authResponse: AuthResponse = await this.userHelpers.authenticate(ctx.request.body as Credentials);
+        ctx.body = authResponse;
     }
 
     ///
@@ -24,13 +30,15 @@ class AuthController {
     public async signUp(ctx: Context) {
         try {
 
-            const data: IUserModel = ctx.request.body as IUserModel
-            const user: IUserDocument = await this.helpers.createUser(data)
-            ctx.body = this.securityService.generateToken(user._id)
+
+            const data: IStudentModel = ctx.request.body as IStudentModel;
+
+            const user: IStudentDocument = await this.helpers.createStudent(data);
+            ctx.body = this.securityService.generateToken(user._id);
 
         } catch (error) {
             console.log(error);
-            ctx.throw(500)
+            ctx.throw(500);
         }
     }
 }
