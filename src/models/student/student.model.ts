@@ -18,7 +18,6 @@ const StudentSchema: Schema = new Schema({
     group: { type: String, enum: groups, default: 'A' },
     schedule: { type: Schema.Types.ObjectId, ref: 'Schedule', default: null },
     career: { type: Number, default: 0 },
-    // specialty:{type:Stri}
 
 }, options)
 

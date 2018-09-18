@@ -5,9 +5,7 @@ import { Container, Inject } from 'typescript-ioc'
 import autobind from 'autobind-decorator'
 import { IStudentModel, IStudentDocument } from "../models/student/student.interface";
 import { UserHelpers } from '../helpers/user.helper'
-import { ID, AuthResponse, Credentials } from "../types";
-import { ObjectID } from "bson";
-import { Schema } from "mongoose";
+import { AuthResponse, Credentials } from "../types";
 
 class AuthController {
     @Inject private helpers: StudentHelpers;
@@ -15,6 +13,7 @@ class AuthController {
     @Inject private securityService: SecurityService;
 
     constructor() {
+
 
     }
 

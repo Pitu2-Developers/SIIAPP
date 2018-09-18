@@ -1,6 +1,6 @@
 import { Credentials, IUser, AuthResponse } from "../types";
 import User from '../models/user/user.model'
-import { Container, Inject } from "typescript-ioc";
+import { Inject } from "typescript-ioc";
 import { SecurityService } from "../security";
 
 
@@ -14,7 +14,6 @@ export class UserHelpers {
     public async authenticate({ email, password }: Credentials): Promise<AuthResponse> {
         try {
             const user: IUser = await User.findOne({ email }).then((res: IUser) => res);
-            // console.log(user);
 
             if (!user) throw `${email} doesn't exist.`;
             else if (!user.comparePassword(password)) throw `The password is incorrect.`;
