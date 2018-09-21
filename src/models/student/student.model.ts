@@ -16,8 +16,6 @@ const groups: string[] = ['A', 'B', 'C']
 const StudentSchema: Schema = new Schema({
     semester: { type: Number, default: 0 },
     group: { type: String, enum: groups, default: 'A' },
-    schedule: { type: Schema.Types.ObjectId, ref: 'Schedule', default: null },
-    career: { type: Number, default: 0 },
 
 }, options)
 

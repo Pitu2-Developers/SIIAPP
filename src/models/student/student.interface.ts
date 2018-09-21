@@ -4,7 +4,6 @@ import { ID } from '../../types';
 export interface IStudentModel extends IUserModel {
     semester?: number,
     group?: string,
-    schedule?: ID[],
     career?: number
 }
 
