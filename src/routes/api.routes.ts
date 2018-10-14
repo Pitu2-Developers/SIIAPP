@@ -15,8 +15,8 @@ router.post('/teacher', ApiController.teacherCtrl.createTeacher)
 
 
 //STUDENT
-router.post('/student', ApiController.studentCtrl.createStudent)
 router.get('/student', ApiController.studentCtrl.getAllStudents)
+// router.post('/student', ApiController.studentCtrl.createStudent)
 
 
 export default router

@@ -28,6 +28,26 @@ describe(' /auth/* [TEST]', () => {
 
 
 
+    it('should create a student /api/student POST response 200', async (done: Function) => {
+        const student: IStudentModel = {
+            career: 1,
+            email: 'student@gmail.com',
+            firstName: 'Jesus Ignacio',
+            lastName: 'Castillo Barrios',
+            gender: 'M',
+            password: '12345678',
+
+        }
+
+        const response = await request(app.getApp().callback()).post('/auth/signup')
+            .send(student)
+
+        console.log(response.error)
+        expect(response.status).toBe(200)
+        done()
+    })
+
+
 
 
 

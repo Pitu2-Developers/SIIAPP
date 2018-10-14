@@ -24,18 +24,18 @@ export class StudentController {
     }
 
     //Create a new student
-    async createStudent(ctx: Context) {
-        const data: IStudentModel = ctx.request.body as IStudentModel
-        try {
+    // async createStudent(ctx: Context) {
+    //     const data: IStudentModel = ctx.request.body as IStudentModel
+    //     try {
 
-            await this.studentHelpers.createStudent(data)
-            ctx.status = 200
-            ctx.body = "OK"
-        } catch (error) {
-            const status = error.status || 500
-            ctx.status = status
-            ctx.body = error
-        }
-    }
+    //         await this.studentHelpers.createStudent(data)
+    //         ctx.status = 200
+    //         ctx.body = "OK"
+    //     } catch (error) {
+    //         const status = error.status || 500
+    //         ctx.status = status
+    //         ctx.body = error
+    //     }
+    // }
 
 }

@@ -21,10 +21,12 @@ class AuthController {
     ///
     async signIn(ctx: Context) {
         try {
-            const authResponse: AuthResponse = await this.userHelpers.authenticate(ctx.request.body as Credentials);
+            const data: Credentials = ctx.request.body as Credentials
+            const authResponse: AuthResponse = await this.userHelpers.authenticate(data);
             ctx.body = authResponse;
 
         } catch (error) {
+
             console.log(error);
 
             const status = error.status || 500
