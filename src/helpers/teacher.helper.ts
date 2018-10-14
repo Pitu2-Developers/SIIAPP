@@ -6,6 +6,10 @@ export default class TeacherHelpers {
     constructor() { }
 
 
+    public createTeacher(data: ITeacherModel) {
+        return new Teacher(data).save().then()
+    }
+
 
 
 }

@@ -12,21 +12,23 @@ const documentOptions: SchemaOptions = {
 }
 
 
-const ScheduleSchema: Schema = new Schema({
-    startTime: { type: Date, required: true },
-    endTime: { type: Date, required: true },
-    day: { type: Number, default: 1 }
+const TimetableSchema: Schema = new Schema({
+    startTime: { type: Number, required: true },
+    endTime: { type: Number, required: true },
+    day: { type: Number, default: 1 },
+    classroom: { type: String, required: true }
 }, documentOptions)
 
 const SubjectSchema: Schema = new Schema({
-    subject: { type: Schema.Types.ObjectId, ref: 'Subject' },
-    teacher: { type: Schema.Types.ObjectId, ref: 'Teacher' },
-    schedule: [ScheduleSchema]
+    subject: { type: Schema.Types.ObjectId, ref: 'subject' },
+    teacher: { type: Schema.Types.ObjectId, ref: 'teacher' },
+    schedule: [TimetableSchema]
 }, documentOptions)
 
 
 const GroupSchema: Schema = new Schema({
-    group: { type: String, required: true },
+    semester: { type: Number, required: true },
+    group: { type: String, enum: ['A', 'B', 'C', 'D', 'E'], required: true },
     subjects: [SubjectSchema],
 
 }, options);

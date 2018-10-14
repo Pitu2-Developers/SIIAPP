@@ -12,5 +12,6 @@ export interface IUserModel {
 
 export interface IUserDocument extends Document, IUserModel {
     comparePassword: (password: string) => boolean
-    fullname?: string
+    fullname?: string,
+    role: string
 }

@@ -16,7 +16,7 @@ describe(' /auth/* [TEST]', () => {
         })
     })
 
-    it('should POST /auth/signin response 200', async (done: Function) => {
+    it.skip('should POST /auth/signin response 200', async (done: Function) => {
         const response = await request(app.getApp().callback()).post('/auth/signin')
             .send({
                 email: 'student@gmail.com',
@@ -27,28 +27,6 @@ describe(' /auth/* [TEST]', () => {
     })
 
 
-    it.skip('should create a student POST /auth/signup ', async () => {
-        const user: IStudentModel = {
-            firstName: 'Nacho',
-            lastName: 'Castillo',
-            email: 'student@gmail.com',
-            password: '12345678',
-            gender: 'M',
-            career: 1,
-            semester: 1,
-            group: 'A'
-        }
-
-        try {
-            const response = await request(app.getApp().callback())
-                .post('/auth/signup').send(user).then((res: any) => res.status)
-
-            expect(response).toBe(200)
-        } catch (error) {
-            console.log(error);
-
-        }
-    }, 10000)
 
 
 

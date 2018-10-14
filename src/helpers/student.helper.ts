@@ -12,7 +12,13 @@ export function hashPassword(password: string): string {
 export class StudentHelpers {
     constructor() { }
 
-    public createStudent(data: IStudentModel): Promise<IStudentDocument> {
+
+    getStudents(): Promise<IStudentDocument[]> {
+        return Student.find().then((res: IStudentDocument[]) => res)
+    }
+
+
+    createStudent(data: IStudentModel): Promise<IStudentDocument> {
 
         const user: IStudentDocument = new Student(data)
         return user.save().then((res: IStudentDocument) => res)

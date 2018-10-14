@@ -7,6 +7,7 @@ import { IStudentModel, IStudentDocument } from "../models/student/student.inter
 import { UserHelpers } from '../helpers/user.helper'
 import { AuthResponse, Credentials } from "../types";
 
+@autobind
 class AuthController {
     @Inject private helpers: StudentHelpers;
     @Inject private userHelpers: UserHelpers;
@@ -18,15 +19,22 @@ class AuthController {
     }
 
     ///
-    @autobind
-    public async signIn(ctx: Context) {
-        const authResponse: AuthResponse = await this.userHelpers.authenticate(ctx.request.body as Credentials);
-        ctx.body = authResponse;
+    async signIn(ctx: Context) {
+        try {
+            const authResponse: AuthResponse = await this.userHelpers.authenticate(ctx.request.body as Credentials);
+            ctx.body = authResponse;
+
+        } catch (error) {
+            console.log(error);
+
+            const status = error.status || 500
+            ctx.status = status
+            // ctx.throw(status)
+            ctx.body = error
+        }
     }
 
-    ///
-    @autobind
-    public async signUp(ctx: Context) {
+    async signUp(ctx: Context) {
         try {
 
 
@@ -37,7 +45,9 @@ class AuthController {
 
         } catch (error) {
             console.log(error);
-            ctx.throw(500);
+            // ctx.throw(500);
+
+            ctx.body = error
         }
     }
 }
