@@ -39,6 +39,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "async": "^2.6.1",
     "autobind-decorator": "^2.1.0",
     "bcrypt": "^3.0.0",

@@ -6,7 +6,8 @@ import { PORT } from './config'
 import router from './routes'
 import './websockets/notification.controller'
 import { createSocketServer } from 'socket-controllers'
-import { cors } from './middlewares/cors.middleware'
+/* import { cors } from './middlewares/cors.middleware' */
+const cors = require('@koa/cors')
 //Helmet
 const helmet = require('koa-helmet')
 
@@ -39,7 +40,7 @@ class App {
         //BODY PARSER MIDDLEWARE 
         this.app.use(KoaBodyParser())
         //cors
-        this.app.use(cors)
+        this.app.use(cors())
         //logger
         this.app.use(logger())
         //Helmet
