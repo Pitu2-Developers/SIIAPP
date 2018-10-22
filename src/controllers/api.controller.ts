@@ -3,7 +3,6 @@ import { Container, Inject } from 'typescript-ioc'
 import autobind from 'autobind-decorator';
 import { StudentController } from './student.controller';
 import { TeacherController } from './teacher.controller';
-import * as fs from 'fs';
 import { AppHelpers } from '../helpers/app.helpers';
 import { AppConfig } from '../types';
 
@@ -20,6 +19,8 @@ class ApiController {
 
 
     constructor() { }
+
+
 
     async getAppConfig(ctx: Context) {
         try {

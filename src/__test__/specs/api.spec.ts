@@ -13,7 +13,8 @@ describe('/api/* [TEST]', () => {
     })
 
 
-    it('should get all students', async (done) => {
+
+    it.skip('should get all students', async (done) => {
         const response = await request(app.getApp().callback()).get('/api/student')
         // console.log(response.status)
         const students = response.body

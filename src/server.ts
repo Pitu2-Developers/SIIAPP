@@ -1,7 +1,7 @@
 // This is required for socket-controllers
 import 'reflect-metadata'
 import * as Koa from 'koa'
-import KoaBodyParser = require("koa-bodyparser");
+import KoaBodyParser = require("koa-body");
 import { PORT } from './config'
 import router from './routes'
 import './websockets/index.controller'
@@ -40,7 +40,9 @@ class App {
     //SET PLUGINS (MIDDLEWARES)
     private setConfig(): void {
         //BODY PARSER MIDDLEWARE 
-        this.app.use(KoaBodyParser())
+        this.app.use(KoaBodyParser({
+            multipart: true
+        }))
         //cors
         this.app.use(cors())
         //logger

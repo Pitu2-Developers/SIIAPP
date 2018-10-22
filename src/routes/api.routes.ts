@@ -4,6 +4,7 @@ import * as KoaRouter from 'koa-router'
 
 const router = new KoaRouter({ prefix: '/api' })
 
+
 //ADMIN
 router.get('/admin/app', ApiController.getAppConfig);
 router.put('/admin/app', ApiController.configureApp);
