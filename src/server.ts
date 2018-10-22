@@ -6,7 +6,6 @@ import { PORT } from './config'
 import router from './routes'
 import './websockets/index.controller'
 import { createSocketServer } from 'socket-controllers'
-/* import { cors } from './middlewares/cors.middleware' */
 const cors = require('@koa/cors')
 //Helmet
 const helmet = require('koa-helmet')
