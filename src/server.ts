@@ -4,7 +4,7 @@ import * as Koa from 'koa'
 import KoaBodyParser = require("koa-bodyparser");
 import { PORT } from './config'
 import router from './routes'
-import './websockets/notification.controller'
+import './websockets/index.controller'
 import { createSocketServer } from 'socket-controllers'
 /* import { cors } from './middlewares/cors.middleware' */
 const cors = require('@koa/cors')

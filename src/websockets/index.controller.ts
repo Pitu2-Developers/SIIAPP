@@ -2,7 +2,7 @@ import { OnConnect, OnDisconnect, SocketController, ConnectedSocket, OnMessage, 
 import { Socket } from 'socket.io';
 
 @SocketController()
-export class NotificationController {
+export class IndexController {
 
     @OnConnect()
     connection(@ConnectedSocket() socket: Socket) {
