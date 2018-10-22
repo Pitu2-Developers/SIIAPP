@@ -4,7 +4,7 @@ const client = createHandyClient()
 
 const HASH_NAME = 'users-connected'
 
-export class RedisHandler {
+export class RedisHelpers {
     constructor() { }
 
     public async setSocketID(_id: string, socketID: string): Promise<number> {
