@@ -24,7 +24,9 @@ class App {
 
         this.port = port
         //INIT SOCKET.IO
-        // this.configSocketIO()
+        // console.log(process.env.NODE_ENV);
+
+        this.configSocketIO()
         // CONFIG KOA APP  / MIDDLEWARES
         this.setConfig()
         // INIT KOA ROUTER 
@@ -32,7 +34,8 @@ class App {
     }
 
     private configSocketIO() {
-        createSocketServer(7001)
+        if (process.env.NODE_ENV != 'test')
+            createSocketServer(7001)
     }
 
     //SET PLUGINS (MIDDLEWARES)

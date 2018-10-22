@@ -28,7 +28,7 @@ describe(' /auth/* [TEST]', () => {
 
 
 
-    it('should create a student /api/student POST response 200', async (done: Function) => {
+    it.skip('should create a student /api/student POST response 200', async (done: Function) => {
         const student: IStudentModel = {
             career: 1,
             email: 'student@gmail.com',
