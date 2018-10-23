@@ -25,7 +25,8 @@ const StudentSchema: Schema = new Schema({
     /*
         (0) Sin Especialidad
     */
-    specialty: { type: Number, default: 0 }
+    specialty: { type: Number, default: 0 },
+    semester: { type: Number, default: 0 }
 
 }, options)
 

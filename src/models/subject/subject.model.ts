@@ -9,10 +9,13 @@ const options: SchemaOptions = {
 
 const SubjectSchema: Schema = new Schema({
     name: { type: String, required: true },
-    code: { type: String, required: true },
+    code: { type: String, required: true, unique: true },
     credits: { type: Number, required: true },
+    isActive: { type: Boolean, default: true },
+    semester: { type: Number, required: true },
+    requisites: [String]
 
 }, options)
 
 
-export default model<ISubjectDocument>('Subject', SubjectSchema)
+export default model<ISubjectDocument>('subject', SubjectSchema)

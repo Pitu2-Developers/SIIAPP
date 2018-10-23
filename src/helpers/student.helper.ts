@@ -19,9 +19,8 @@ export class StudentHelpers {
 
 
     createStudent(data: IStudentModel): Promise<IStudentDocument> {
-
-        const user: IStudentDocument = new Student(data)
-        return user.save().then((res: IStudentDocument) => res)
+        const user: Promise<IStudentDocument> = new Student(data).save()
+        return user
 
     }
 }

@@ -53,4 +53,4 @@ UserSchema.pre('save', function (next: Function) {
 })
 
 
-export default model<IUserDocument>('User', UserSchema)
+export default model<IUserDocument>('user', UserSchema)

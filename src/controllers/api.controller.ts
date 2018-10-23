@@ -5,6 +5,7 @@ import { StudentController } from './student.controller';
 import { TeacherController } from './teacher.controller';
 import { AppHelpers } from '../helpers/app.helpers';
 import { AppConfig } from '../types';
+import { SubjectControllers } from './subject.controller';
 
 
 
@@ -13,6 +14,7 @@ class ApiController {
     //INJECT CONTROLLERS  
     @Inject public studentCtrl: StudentController
     @Inject public teacherCtrl: TeacherController
+    @Inject public subjectCtrl: SubjectControllers
     //INJECT HELPERS
     @Inject private appHelpers: AppHelpers
 

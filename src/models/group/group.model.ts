@@ -1,4 +1,5 @@
 import { Schema, model, SchemaOptions } from 'mongoose'
+import { IGroupDocument } from './group.interface';
 const options: SchemaOptions = {
     id: false,
     timestamps: true,
@@ -21,7 +22,7 @@ const TimetableSchema: Schema = new Schema({
 
 const SubjectSchema: Schema = new Schema({
     subject: { type: Schema.Types.ObjectId, ref: 'subject' },
-    teacher: { type: Schema.Types.ObjectId, ref: 'teacher' },
+    teacher: { type: Schema.Types.ObjectId, ref: 'user' },
     schedule: [TimetableSchema]
 }, documentOptions)
 
@@ -34,4 +35,4 @@ const GroupSchema: Schema = new Schema({
 }, options);
 
 
-export default model('Group', GroupSchema);
+export default model<IGroupDocument>('Group', GroupSchema);

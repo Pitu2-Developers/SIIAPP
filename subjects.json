@@ -1,0 +1,46 @@
+{
+    "subjects": [
+        {
+            "name": "Calculo Diferencial",
+            "code": "ISI11",
+            "credits": 5,
+            "semester": 1
+        },
+        {
+            "name": "Fundamentos de Programación",
+            "code": "ISI12",
+            "credits": 5,
+            "semester": 1
+        },
+        {
+            "name": "Taller de Etiica",
+            "code": "ISI13",
+            "credits": 4,
+            "semester": 1
+        },
+        {
+            "name": "Matemáticas Discretas",
+            "code": "ISI14",
+            "credits": 5,
+            "semester": 1
+        },
+        {
+            "name": "Taller de Administración",
+            "code": "ISI15",
+            "credits": 4,
+            "semester": 1
+        },
+        {
+            "name": "Fundamentos de Investigación",
+            "code": "ISI16",
+            "credits": 4,
+            "semester": 1
+        },
+        {
+            "name": "Tutorías",
+            "code": "ISI17",
+            "credits": 2,
+            "semester": 1
+        }
+    ]
+}

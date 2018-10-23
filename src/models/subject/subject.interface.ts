@@ -3,7 +3,9 @@ import { Document } from 'mongoose'
 export interface ISubjectModel {
     name: string,
     code: string,
-    semester: number
+    semester: number,
+    credits: number,
+    isActive: boolean,
 
 }
 
