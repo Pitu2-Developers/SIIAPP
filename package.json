@@ -1,7 +1,6 @@
 {
-  "name": "koa-scaffold",
+  "name": "siiapp",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Nacho Castillo <4811095288ic@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -59,5 +58,8 @@
     "mongoose": "^5.2.13",
     "socket-controllers": "^0.0.3",
     "socket.io": "^2.1.1"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
