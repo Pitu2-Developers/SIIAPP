@@ -1,5 +1,8 @@
 import { Schema, model, SchemaOptions } from 'mongoose'
 import { IGroupDocument } from './group.interface';
+// import * as  moment from 'moment'
+import * as moment from 'moment'
+
 const options: SchemaOptions = {
     id: false,
     timestamps: true,
@@ -21,18 +24,33 @@ const TimetableSchema: Schema = new Schema({
 }, documentOptions)
 
 const SubjectSchema: Schema = new Schema({
-    subject: { type: Schema.Types.ObjectId, ref: 'subject' },
+    subjectCode: { type: String, required: true, ref: 'subject' },
     teacher: { type: Schema.Types.ObjectId, ref: 'user' },
     schedule: [TimetableSchema]
 }, documentOptions)
+
 
 
 const GroupSchema: Schema = new Schema({
     semester: { type: Number, required: true },
     group: { type: String, enum: ['A', 'B', 'C', 'D', 'E'], required: true },
     subjects: [SubjectSchema],
+    academicYear: { type: String },
+
 
 }, options);
+
+GroupSchema.pre('save', function (next) {
+    const group: IGroupDocument = this as IGroupDocument,
+        academicYear = `${moment().format('MMMM').slice(0, 3).toUpperCase()}-${moment().add(6, 'M').format('MMMM').slice(0, 3).toUpperCase()}/${moment().year()}`
+
+
+
+    // group.academicYear = 'AGO-DIC/2018'
+    group.academicYear = academicYear
+    next()
+
+})
 
 
 export default model<IGroupDocument>('Group', GroupSchema);

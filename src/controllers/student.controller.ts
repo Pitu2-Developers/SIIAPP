@@ -6,6 +6,7 @@ import { IStudentModel } from "../models/student/student.interface";
 
 
 
+
 @autobind
 export class StudentController {
     // INJECT HELPERS
@@ -23,19 +24,11 @@ export class StudentController {
 
     }
 
-    //Create a new student
-    // async createStudent(ctx: Context) {
-    //     const data: IStudentModel = ctx.request.body as IStudentModel
-    //     try {
+    async updateStudent(ctx: Context) {
 
-    //         await this.studentHelpers.createStudent(data)
-    //         ctx.status = 200
-    //         ctx.body = "OK"
-    //     } catch (error) {
-    //         const status = error.status || 500
-    //         ctx.status = status
-    //         ctx.body = error
-    //     }
-    // }
+
+    }
+
+
 
 }

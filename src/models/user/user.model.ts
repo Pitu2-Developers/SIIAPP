@@ -21,6 +21,7 @@ const UserSchema: Schema = new Schema({
     lastName: { type: String, required: true },
     gender: { type: String, enum: ['M', 'F'], default: 'M' },
     isActive: { type: Boolean, default: false },
+    isBlocked: { type: Boolean, default: false }
 }, options)
 
 

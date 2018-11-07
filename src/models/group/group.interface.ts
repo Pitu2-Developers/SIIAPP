@@ -11,7 +11,7 @@ interface Timetable {
 }
 
 interface Subject {
-    subject: ID,
+    subjectCode: string,
     teacher: ID,
     timetable: Timetable[]
 }
@@ -20,7 +20,8 @@ interface Subject {
 export interface IGroupModel {
     semester: number,
     group: string,
-    subjects: Subject[]
+    subjects: Subject[],
+    academicYear?: string
 
 }
 

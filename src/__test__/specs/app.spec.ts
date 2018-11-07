@@ -13,7 +13,7 @@ describe('Testing app config', () => {
 
     })
 
-    it.skip('should update app config file', async (done) => {
+    it('should update app config file', async (done) => {
         const currentTime: Date = new Date()
         const cfg: AppConfig = {
             enrollment: false,

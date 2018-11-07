@@ -7,6 +7,8 @@ import { IStudentModel, IStudentDocument } from "../models/student/student.inter
 import { UserHelpers } from '../helpers/user.helper'
 import { AuthResponse, Credentials } from "../types";
 
+
+
 @autobind
 class AuthController {
     @Inject private helpers: StudentHelpers;

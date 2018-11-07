@@ -5,15 +5,14 @@
   "author": "Nacho Castillo <4811095288ic@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./heroku/dist",
     "build": "yarn clean && webpack --config ./webpack.config.js",
     "test": "NODE_ENV=test jest ",
     "dev": "nodemon",
-    "start": "node ./dist/bundle.js"
+    "start": "node ./heroku/dist/bundle.js"
   },
   "devDependencies": {
     "@types/async": "^2.0.49",
-    "@types/bcrypt": "^2.0.0",
     "@types/jest": "^23.3.1",
     "@types/jwt-simple": "^0.5.33",
     "@types/koa": "^2.0.46",
@@ -40,9 +39,11 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "@types/bcrypt": "^3.0.0",
+    "@types/koa-send": "^4.1.1",
     "async": "^2.6.1",
     "autobind-decorator": "^2.1.0",
-    "bcrypt": "^3.0.0",
+    "bcrypt": "^3.0.2",
     "cartoon-avatar": "^1.0.2",
     "handy-redis": "^1.5.1",
     "jwt-simple": "^0.5.1",
@@ -52,6 +53,8 @@
     "koa-logger": "^3.2.0",
     "koa-parser": "^1.0.5",
     "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0",
     "moment": "^2.22.2",
     "mongoose": "^5.2.13",
     "socket-controllers": "^0.0.3",

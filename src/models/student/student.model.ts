@@ -21,7 +21,7 @@ const StudentSchema: Schema = new Schema({
         (4) Ambiental
         (5) IGE 
     */
-    career: { type: Number, enum: [1, 2, 3, 4, 5], required: true },
+    career: { type: Number, enum: [1, 2, 3, 4, 5] },
     /*
         (0) Sin Especialidad
     */

@@ -1,9 +1,9 @@
 {
-    "enrollment": false,
+    "enrollment": true,
     "timetableSelection": {
-        "isActive": true,
-        "carrer": 2,
-        "startTime": "2018-10-14T02:34:11.758Z",
-        "endTime": "2018-10-14T02:54:11.758Z"
+        "isActive": false,
+        "carrer": 1,
+        "startTime": "2018-11-06T18:38:49.893Z",
+        "endTime": "2018-11-06T18:58:49.893Z"
     }
 }

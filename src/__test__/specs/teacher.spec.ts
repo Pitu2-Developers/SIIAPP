@@ -14,7 +14,7 @@ describe('/api/* [TEST]', () => {
     })
 
 
-    it.skip('should update a teacher by ip', async (done) => {
+    it.skip('should update a teacher by id', async (done) => {
         const teacherID: string = '5bcf875fcb53c347b5d190d0',
             updatedTeacher: Partial<ITeacherModel> = {
                 email: 'new@gmail.com'
@@ -29,8 +29,8 @@ describe('/api/* [TEST]', () => {
 
     it.skip('should create a new teacher', async (done) => {
         const teacher: ITeacherModel = {
-            email: 'albita@gmail.com',
-            firstName: 'Albita',
+            email: 'teacher0@gmail.com',
+            firstName: 'Teacher0',
             lastName: 'Guerrero',
             gender: 'M',
             password: '12345678'

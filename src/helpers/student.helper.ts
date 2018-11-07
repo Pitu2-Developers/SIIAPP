@@ -2,6 +2,7 @@ import Student from '../models/student/student.model'
 import { genSaltSync, hashSync } from 'bcrypt';
 import { SALT_FACTOR } from '../config';
 import { IStudentModel, IStudentDocument } from '../models/student/student.interface';
+import { ID } from '../types';
 
 export function hashPassword(password: string): string {
     const salt: string = genSaltSync(SALT_FACTOR)
@@ -19,9 +20,17 @@ export class StudentHelpers {
 
 
     createStudent(data: IStudentModel): Promise<IStudentDocument> {
-        const user: Promise<IStudentDocument> = new Student(data).save()
-        return user
+        return new Student(data).save()
+    }
 
+    async updateStudent(_id: ID, data: Partial<IStudentModel>) {
+        try {
+            const res = await Student.findByIdAndUpdate({ _id }, data)
+            if (!res) throw { status: 418, message: `Student doesn't exist.` }
+
+        } catch (error) {
+            throw error
+        }
     }
 }
 

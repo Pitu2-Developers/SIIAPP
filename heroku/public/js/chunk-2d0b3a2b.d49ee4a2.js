@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b3a2b"],{"28e4":function(e,n,t){"use strict";t.r(n);var l=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},s=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("main",{staticClass:"flex flex-center"},[t("h1",[e._v("GRADES")])])}],a=t("2877"),c={},r=Object(a["a"])(c,l,s,!1,null,null,null);r.options.__file="GradesView.vue";n["default"]=r.exports}}]);
+//# sourceMappingURL=chunk-2d0b3a2b.d49ee4a2.js.map

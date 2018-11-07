@@ -4,6 +4,8 @@ import * as Koa from 'koa'
 import KoaBodyParser = require("koa-body");
 import { PORT } from './config'
 import router from './routes'
+const KoaStatic = require('koa-static')
+import * as path from 'path'
 import './websockets/index.controller'
 import { createSocketServer } from 'socket-controllers'
 const cors = require('@koa/cors')
@@ -49,6 +51,12 @@ class App {
         this.app.use(logger())
         //Helmet
         this.app.use(helmet())
+        //static
+        this.app.use(KoaStatic(path.resolve(__dirname, '..', 'public')))
+        // console.log(path.resolve(__dirname, '..', 'public', 'index.html'));
+        // console.log(__dirname);
+
+
     }
 
     //INIT ROUTER 

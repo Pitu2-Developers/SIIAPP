@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 const config = {
+    node: {
+        __dirname: true
+    },
     stats: "errors-only",
     target: 'node',
     externals: [nodeExternals()],
@@ -23,7 +26,7 @@ const config = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'heroku', 'dist')
     },
     plugins: [
         new HtmlWebpackPlugin({

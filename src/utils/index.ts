@@ -1,4 +1,11 @@
 import { IError } from "../types";
+import User from '../models/user/user.model'
+
+export async function checkEmailExists(email: string) {
+    const count: number = await User.count({ email }).then((res: number) => res)
+
+    return count >= 1 ? true : false
+}
 
 export function getCareer(career: number): string {
     switch (career) {
