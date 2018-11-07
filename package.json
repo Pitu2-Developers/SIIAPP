@@ -31,7 +31,6 @@
     "ts-loader": "^5.0.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3",
-    "typescript-ioc": "^1.2.4",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
@@ -57,7 +56,8 @@
     "moment": "^2.22.2",
     "mongoose": "^5.2.13",
     "socket-controllers": "^0.0.3",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "typescript-ioc": "^1.2.4"
   },
   "engines": {
     "node": "10.x"
