@@ -1,4 +1,5 @@
 import ApiRouter from './api.routes'
+import AdminRouter from './admin.routes'
 import AuthRouter from './auth.routes'
 import * as KoaRouter from 'koa-router'
 const KoaSend = require('koa-send')
@@ -7,7 +8,8 @@ import * as path from 'path'
 
 const routers: any[] = [
     ApiRouter,
-    AuthRouter
+    AuthRouter,
+    AdminRouter
 ]
 
 

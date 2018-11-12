@@ -6,11 +6,11 @@ import * as KoaRouter from 'koa-router'
 const router = new KoaRouter({ prefix: '/api' })
 
 //GROUP
-router.post('/group', ApiController.groupCtrl.createGroup)
-router.delete('/group/:_id', ApiController.groupCtrl.deleteGroup)
+router.post('/group', ApiController.groupCtrl.create)
+router.delete('/group/:_id', ApiController.groupCtrl.delete)
 
 //SUBJECT
-router.post('/subject', ApiController.subjectCtrl.addSubject)
+router.post('/subject', ApiController.subjectCtrl.create)
 
 //ADMIN
 router.get('/admin/app', ApiController.getAppConfig);
@@ -18,15 +18,16 @@ router.put('/admin/app', ApiController.configureApp);
 
 
 //TEACHER
-router.post('/teacher', ApiController.teacherCtrl.createTeacher)
-router.delete('/teacher/:_id', ApiController.teacherCtrl.deleteTeacher)
-router.put('/teacher/:_id', ApiController.teacherCtrl.updateTeacher)
+router.post('/teacher', ApiController.teacherCtrl.create)
+router.delete('/teacher/:_id', ApiController.teacherCtrl.delete)
+router.put('/teacher/:_id', ApiController.teacherCtrl.update)
 
 
 //STUDENT
-router.get('/student', ApiController.studentCtrl.getAllStudents)
-router.put('/student/:_id', ApiController.studentCtrl.updateStudent)
-// router.post('/student', ApiController.studentCtrl.createStudent)
+router.get('/student', ApiController.studentCtrl.getAll)
+router.get('/student/:_id', ApiController.studentCtrl.getAll)
+router.put('/student/:_id', ApiController.studentCtrl.update)
+router.delete('/student/:_id', ApiController.studentCtrl.delete)
 
 
 export default router

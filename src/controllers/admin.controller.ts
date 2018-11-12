@@ -11,10 +11,13 @@ export class AdminController {
     @Inject private _: AdminHelpers
 
     async signUp(ctx: Context) {
+
         try {
             const data: IAdminModel = ctx.request.body
+            console.log(data);
             await this._.createAdmin(data)
-
+            ctx.status = 200
+            // ctx.body = "OK"
         } catch (error) {
             const { status, message } = handleError(error)
             ctx.status = status

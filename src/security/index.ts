@@ -1,7 +1,13 @@
 import { decode, encode } from 'jwt-simple'
 import * as moment from 'moment'
 import { ID } from '../types/'
-import { SECRET_TOKEN } from '../config';
+import { SECRET_TOKEN, SALT_FACTOR } from '../config';
+import { genSaltSync, hashSync } from 'bcrypt';
+
+export function hashPassword(password: string): string {
+    const salt: string = genSaltSync(SALT_FACTOR)
+    return hashSync(password, salt)
+}
 
 
 export class SecurityService {

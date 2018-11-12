@@ -4,12 +4,13 @@ import { connect } from './models';
 import { PORT } from './config';
 
 
-
 const tasks: Function[] = [
     //CONNECT MONGODB 
     async (done: Function) => {
         try {
             const mongoResponse = await connect()
+            console.log('MONGO DB [WORKS]');
+
             done()
         } catch (error) {
             console.error(error);

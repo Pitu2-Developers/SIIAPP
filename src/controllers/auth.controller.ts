@@ -6,6 +6,7 @@ import autobind from 'autobind-decorator'
 import { IStudentModel, IStudentDocument } from "../models/student/student.interface";
 import { UserHelpers } from '../helpers/user.helper'
 import { AuthResponse, Credentials } from "../types";
+import { handleError } from "../utils";
 
 
 
@@ -43,15 +44,18 @@ class AuthController {
 
 
             const data: IStudentModel = ctx.request.body as IStudentModel;
+            const user = await this.helpers.createStudent(data);
+            console.log(data);
 
-            const user: IStudentDocument = await this.helpers.createStudent(data);
-            ctx.body = this.securityService.generateToken(user._id);
-
+            ctx.body = this.securityService.generateToken(user);
+            ctx.status = 200
         } catch (error) {
-            console.log(error);
-            // ctx.throw(500);
+            // console.log("PITPOPPPPP");
 
-            ctx.body = error
+            const { status, message } = handleError(error)
+
+            ctx.status = status
+            ctx.body = message
         }
     }
 }

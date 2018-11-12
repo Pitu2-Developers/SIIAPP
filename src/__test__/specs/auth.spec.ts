@@ -31,7 +31,7 @@ describe(' /auth/* [TEST]', () => {
     it.skip('should create a student /api/student POST response 200', async (done: Function) => {
         const student: IStudentModel = {
             career: 1,
-            email: 'student@gmail.com',
+            email: 'student7@gmail.com',
             firstName: 'Jesus Ignacio',
             lastName: 'Castillo Barrios',
             gender: 'M',
@@ -42,7 +42,7 @@ describe(' /auth/* [TEST]', () => {
         const response = await request(app.getApp().callback()).post('/auth/signup')
             .send(student)
 
-        console.log(response.error)
+        console.log(response.error.text)
         expect(response.status).toBe(200)
         done()
     })

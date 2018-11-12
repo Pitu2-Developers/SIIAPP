@@ -1,6 +1,6 @@
 import { Schema, model, SchemaOptions } from 'mongoose'
 import { IUserDocument } from './user.interface'
-import { hashPassword } from '../../helpers/student.helper';
+import { hashPassword } from '../../security/';
 import { compareSync } from 'bcrypt';
 const tooavatar = require('cartoon-avatar')
 
@@ -12,7 +12,6 @@ const options: SchemaOptions = {
     id: false,
     discriminatorKey: 'role'
 }
-
 const UserSchema: Schema = new Schema({
     avatar: { type: String },
     email: { type: String, required: true, unique: true },
@@ -21,20 +20,48 @@ const UserSchema: Schema = new Schema({
     lastName: { type: String, required: true },
     gender: { type: String, enum: ['M', 'F'], default: 'M' },
     isActive: { type: Boolean, default: false },
-    isBlocked: { type: Boolean, default: false }
+    isBlocked: { type: Boolean, default: false },
+    notifications: [{ type: Schema.Types.ObjectId }]
 }, options)
 
 
 
+class UserClass {
+    firstName: string;
+    lastName: string;
+    password: string
 
-UserSchema.virtual('fullname')
-    .get(function () {
+    get fullname() {
         return `${this.firstName} ${this.lastName}`
-    })
+    }
 
-UserSchema.methods.comparePassword = function (password: string) {
-    return compareSync(password, this.password)
+    comparePassword(password: string) {
+        return compareSync(password, this.password)
+
+    }
+    private preSaveHandler(next: Function) {
+
+    }
+
 }
+
+
+
+
+
+
+
+
+// UserSchema.virtual('fullname')
+//     .get(function () {
+//         return `${this.firstName} ${this.lastName}`
+//     })
+
+// UserSchema.methods.comparePassword = function (password: string) {
+//     return compareSync(password, this.password)
+// }
+
+UserSchema.loadClass(UserClass)
 
 UserSchema.pre('save', function (next: Function) {
 

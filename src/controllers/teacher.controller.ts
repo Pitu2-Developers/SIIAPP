@@ -15,7 +15,7 @@ export class TeacherController {
 
     constructor() { }
 
-    async createTeacher(ctx: Context) {
+    async create(ctx: Context) {
         const data: ITeacherModel = ctx.request.body as ITeacherModel
         try {
             await this._.createTeacher(data)
@@ -27,7 +27,7 @@ export class TeacherController {
         }
     }
 
-    async deleteTeacher(ctx: Context) {
+    async delete(ctx: Context) {
         const _id: ID = ctx.params._id
         try {
             // console.log("AQUI");
@@ -48,7 +48,7 @@ export class TeacherController {
         }
     }
 
-    async updateTeacher(ctx: Context) {
+    async update(ctx: Context) {
         const data: Partial<ITeacherModel> = ctx.request.body,
             _id: ID = ctx.params._id
         // console.log(data);

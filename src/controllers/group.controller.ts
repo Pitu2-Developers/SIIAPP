@@ -14,7 +14,7 @@ export class GroupControllers {
 
     @Inject private _: GroupHelpers
 
-    async createGroup(ctx: Context) {
+    async create(ctx: Context) {
         const data: IGroupModel = ctx.request.body as IGroupModel
 
         try {
@@ -28,7 +28,7 @@ export class GroupControllers {
             ctx.body = message
         }
     }
-    async deleteGroup(ctx: Context) {
+    async delete(ctx: Context) {
         const _id: ID = ctx.params._id
         try {
             await this._.deleteGroup(_id)
