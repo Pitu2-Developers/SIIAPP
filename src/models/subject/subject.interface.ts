@@ -6,6 +6,7 @@ export interface ISubjectModel {
     semester: number,
     credits: number,
     isActive: boolean,
+    career: number
 
 }
 

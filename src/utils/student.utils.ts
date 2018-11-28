@@ -1,5 +1,6 @@
 
 const BASE_URL: string = 'http://localhost:7005'
+// const BASE_URL: string = 'http://10.42.0.56:7005'
 import $axios from 'axios'
 import { IStudentModel } from '../models/student/student.interface';
 import { ID } from '../types';

@@ -4,9 +4,14 @@ import autobind from 'autobind-decorator';
 import { StudentController } from './student.controller';
 import { TeacherController } from './teacher.controller';
 import { AppHelpers } from '../helpers/app.helpers';
-import { AppConfig } from '../types';
-import { SubjectControllers } from './subject.controller';
-import { GroupControllers } from './group.controller';
+import { SubjectController } from './subject.controller';
+import { GroupController } from './group.controller';
+
+import { UserController } from './user.controller';
+import { SubjectInfoController } from './subject-info.controller';
+import { EnrollmentProcessController } from './enrollment-process.controller';
+import { SchoolYearController } from './school-years.controller';
+import { FinancialController } from './financial.controller';
 
 
 
@@ -15,15 +20,19 @@ class ApiController {
     //INJECT CONTROLLERS  
     @Inject public studentCtrl: StudentController
     @Inject public teacherCtrl: TeacherController
-    @Inject public subjectCtrl: SubjectControllers
-    @Inject public groupCtrl: GroupControllers
+    @Inject public subjectCtrl: SubjectController
+    @Inject public groupCtrl: GroupController
+    @Inject public userCtrl: UserController
+    @Inject public subjectInfoCtrl: SubjectInfoController
+    @Inject public enrollmentProcessCtrl: EnrollmentProcessController
+    @Inject public schoolYearCtrl: SchoolYearController
+    @Inject public financialCtrl: FinancialController
     //INJECT HELPERS
     @Inject private appHelpers: AppHelpers
 
 
 
     constructor() { }
-
 
 
     async getAppConfig(ctx: Context) {
@@ -37,15 +46,7 @@ class ApiController {
         }
     }
 
-    async configureApp(ctx: Context) {
-        try {
-            this.appHelpers.updateAppConfig(ctx.request.body as AppConfig)
-            ctx.body = "OK"
-        } catch (error) {
-            ctx.throw(500)
-        }
 
-    }
 
 
 }

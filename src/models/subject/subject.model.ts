@@ -13,7 +13,15 @@ const SubjectSchema: Schema = new Schema({
     credits: { type: Number, required: true },
     isActive: { type: Boolean, default: true },
     semester: { type: Number, required: true },
-    requisites: [String]
+    /*
+      (0) ALL
+      (1) Sistemas
+      (2) Industrial
+      (3) Food Industry 
+      (4) Enviromental 
+      (5) Business Management
+  */
+    career: { type: Number, required: true }
 
 }, options)
 

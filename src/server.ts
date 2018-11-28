@@ -1,13 +1,14 @@
 // This is required for socket-controllers
-import 'reflect-metadata'
+// import 'reflect-metadata'
+
 import * as Koa from 'koa'
 import KoaBodyParser = require("koa-body");
 import { PORT } from './config'
 import router from './routes'
 const KoaStatic = require('koa-static')
 import * as path from 'path'
-import './websockets/index.controller'
-import { createSocketServer } from 'socket-controllers'
+// import './websockets/index.controller'
+// import { createSocketServer } from 'socket-controllers'
 const cors = require('@koa/cors')
 //Helmet
 const helmet = require('koa-helmet')
@@ -27,17 +28,17 @@ class App {
         //INIT SOCKET.IO
         // console.log(process.env.NODE_ENV);
 
-        this.configSocketIO()
-        // CONFIG KOA APP  / MIDDLEWARES
+        // this.configSocketIO()
+        // CON7001FIG KOA APP  / MIDDLEWARES
         this.setConfig()
         // INIT KOA ROUTER 
         this.initRouter()
     }
 
-    private configSocketIO() {
-        if (process.env.NODE_ENV != 'test')
-            createSocketServer(7001)
-    }
+    // private configSocketIO() {
+    //     if (process.env.NODE_ENV != 'test')
+    //         createSocketServer(7001)
+    // }
 
     //SET PLUGINS (MIDDLEWARES)
     private setConfig(): void {

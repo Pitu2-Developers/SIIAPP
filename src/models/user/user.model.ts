@@ -18,7 +18,8 @@ const UserSchema: Schema = new Schema({
     password: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    gender: { type: String, enum: ['M', 'F'], default: 'M' },
+    gender: { type: String, enum: ['M', 'F', 'GL'], default: 'M' },
+    age: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
     isBlocked: { type: Boolean, default: false },
     notifications: [{ type: Schema.Types.ObjectId }]
@@ -39,27 +40,10 @@ class UserClass {
         return compareSync(password, this.password)
 
     }
-    private preSaveHandler(next: Function) {
-
-    }
 
 }
 
 
-
-
-
-
-
-
-// UserSchema.virtual('fullname')
-//     .get(function () {
-//         return `${this.firstName} ${this.lastName}`
-//     })
-
-// UserSchema.methods.comparePassword = function (password: string) {
-//     return compareSync(password, this.password)
-// }
 
 UserSchema.loadClass(UserClass)
 
@@ -73,6 +57,7 @@ UserSchema.pre('save', function (next: Function) {
 
     //  
     if (!user.isModified('password')) return next()
+
     else if (user.isNew && user.isModified('password')) {
         user.password = hashPassword(user.password)
         next()

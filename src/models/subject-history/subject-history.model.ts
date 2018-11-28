@@ -1,5 +1,8 @@
-import { model, Schema, SchemaOptions } from 'mongoose'
+import { model, Schema, SchemaOptions, HookNextFunction } from 'mongoose'
 import { ISubjectHistoryDocument } from './subject-history.interface';
+import { SubjectInfoHelpers } from '../../helpers/subject-info.helpers';
+import { ISubjectInfoDocument } from '../subject-info/subject-info.interface';
+const { remove } = new SubjectInfoHelpers()
 
 const options: SchemaOptions = {
     timestamps: true,
@@ -10,7 +13,7 @@ const options: SchemaOptions = {
 
 
 const SubjectHistorySchema: Schema = new Schema({
-    subjectCode: { type: String, required: true },
+    subject: { type: Schema.Types.ObjectId, ref: 'subjectinfo', required: true },
     /*
         0 ->  Normal
         1 ->  
@@ -18,7 +21,7 @@ const SubjectHistorySchema: Schema = new Schema({
     */
     status: { type: Number, default: 0 },
     attempts: { type: Number, default: 1 },
-    user: { type: Schema.Types.ObjectId, ref: 'user' }
+    isFail: { type: Boolean, default: false },
 
 
 }, options)
@@ -30,6 +33,8 @@ SubjectHistorySchema.virtual('subjectCode', {
     foreignField: 'code',
     justOne: true
 })
+
+
 
 
 export default model<ISubjectHistoryDocument>('subjecthistory', SubjectHistorySchema)

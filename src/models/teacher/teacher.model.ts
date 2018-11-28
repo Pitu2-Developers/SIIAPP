@@ -14,7 +14,7 @@ const options: SchemaOptions = {
 
 const TeacherSchema: Schema = new Schema({
     //ADD CUSTOM PROPERTIES.
-
+    subjectGroups: [{ type: Schema.Types.ObjectId, ref: 'subject group' }]
 }, options)
 
 export default User.discriminator<ITeacherDocument>('teacher', TeacherSchema)

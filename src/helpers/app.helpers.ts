@@ -1,8 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { AppConfig } from '../types';
+import autobind from 'autobind-decorator';
 
 
+@autobind
 export class AppHelpers {
 
     private filename: string = 'config.json'

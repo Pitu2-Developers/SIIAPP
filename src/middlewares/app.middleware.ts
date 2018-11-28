@@ -1,12 +1,14 @@
 import { Context } from "koa";
 import { AppConfig } from "../types";
-const cfg: AppConfig = require('../config.json')
-
+import { AppHelpers } from "../helpers/app.helpers";
+// const cfg: AppConfig = require('../config.json')
+const { getAppConfig } = new AppHelpers()
 
 export async function isEnrollment(ctx: Context, next: Function) {
+    const cfg = getAppConfig()
     console.log(cfg);
 
-    if (cfg.enrollment)
+    if (cfg.enrollmentMode)
         await next()
     else {
         ctx.status = 401

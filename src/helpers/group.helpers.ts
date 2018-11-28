@@ -5,11 +5,21 @@ import { ID } from "../types";
 export class GroupHelpers {
 
 
-    createGroup(data: IGroupModel): Promise<IGroupDocument> {
+    create(data: IGroupModel): Promise<IGroupDocument> {
         return new Group(data).save()
     }
 
-    async deleteGroup(_id: ID): Promise<void> {
+    async addSubject(_id: ID, subjectID: ID) {
+        try {
+            const res = await Group.findByIdAndUpdate({ _id }, { $push: { subjects: subjectID } }, { new: true })
+            console.log(res);
+
+        } catch (error) {
+            throw { message: 'Server error', status: 500 }
+        }
+    }
+
+    async remove(_id: ID): Promise<void> {
 
         try {
             const res = await Group.findByIdAndRemove({ _id })

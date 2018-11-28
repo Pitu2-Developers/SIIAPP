@@ -7,11 +7,13 @@ export interface IUserModel {
     firstName: string,
     lastName: string,
     gender: string,
+    age: number,
     isActive?: boolean,
+    isBlocked?: boolean
 }
 
 export interface IUserDocument extends Document, IUserModel {
-    comparePassword: (password: string) => boolean
+    comparePassword: (password: string) => boolean,
     fullname?: string,
     role: string
 }

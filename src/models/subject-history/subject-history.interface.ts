@@ -2,9 +2,10 @@ import { Document } from 'mongoose'
 import { ID } from '../../types';
 
 export interface ISubjectHistoryModel {
-    subjectCode: string,
+    subject: ID,
+    status?: number,
     attempts?: number,
-    status?: number
+    isFail?: boolean
 
 }
 export interface ISubjectHistoryDocument extends Document, ISubjectHistoryModel { }

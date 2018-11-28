@@ -15,6 +15,7 @@ const options: SchemaOptions = {
 
 const AdminSchema: Schema = new Schema({
     isAdmin: { type: Boolean, default: true }
+
 }, options)
 
 

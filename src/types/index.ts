@@ -2,6 +2,17 @@ import { Schema } from 'mongoose'
 import { IStudentDocument } from '../models/student/student.interface';
 import { ITeacherDocument } from '../models/teacher/teacher.interface';
 
+export interface TokenDecodedPayload {
+    sub: ID,
+    role: string
+}
+export interface TokenPayload {
+    iat: number,
+    exp: number,
+    sub: ID,
+    role: string
+}
+
 export interface IError {
     status: number,
     message: string
@@ -18,16 +29,23 @@ export type Credentials = {
     password: string
 }
 
+interface Career {
+    career: number,
+    start: Date,
+    end: Date
+}
+
 
 interface TimetableSelection {
     isActive: boolean,
-    carrer: number,
-    startTime: Date,
-    endTime: Date
+    careers: Career[],
+
 }
 
 export interface AppConfig {
-    enrollment: boolean,
+    academicYear: string,
+    devMode: boolean,
+    enrollmentMode: boolean,
     timetableSelection?: TimetableSelection,
 
 

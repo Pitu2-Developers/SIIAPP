@@ -4,11 +4,12 @@ import { Inject } from "typescript-ioc";
 import { SubjectHelpers } from "../helpers/subject.helpers";
 import { ISubjectModel } from "../models/subject/subject.interface";
 import { handleError } from "../utils";
+import { HTTP_201_CREATED, HTTP_204_NO_CONTENT } from ".";
 
 
 
 @autobind
-export class SubjectControllers {
+export class SubjectController {
 
     @Inject private _: SubjectHelpers
 
@@ -18,7 +19,8 @@ export class SubjectControllers {
             const data: ISubjectModel = ctx.request.body as ISubjectModel
             console.log(data);
             await this._.create(data)
-            ctx.body = 'OK'
+            ctx.status = HTTP_201_CREATED
+            // ctx.body = 'OK'
         } catch (error) {
             const { status, message } = handleError(error)
             ctx.status = status
@@ -31,7 +33,7 @@ export class SubjectControllers {
         const _id: string = ctx.params._id
         try {
             await this._.delete(_id)
-            ctx.status = 200;
+            ctx.status = HTTP_204_NO_CONTENT;
 
         } catch (error) {
             const { status, message } = handleError(error)
@@ -44,10 +46,12 @@ export class SubjectControllers {
         const _id: string = ctx.params._id
         try {
             await this._.update(_id, ctx.request.body)
-            ctx.status = 200;
+            ctx.status = HTTP_204_NO_CONTENT;
 
         } catch (error) {
-
+            const { status, message } = handleError(error)
+            ctx.status = status
+            ctx.body = message
         }
 
     }

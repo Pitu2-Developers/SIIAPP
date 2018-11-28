@@ -1,9 +1,9 @@
 {
-    "enrollment": true,
+    "academicYear": "AGO-DIC/18",
+    "devMode": false,
+    "enrollmentMode": true,
     "timetableSelection": {
         "isActive": false,
-        "carrer": 1,
-        "startTime": "2018-11-06T18:38:49.893Z",
-        "endTime": "2018-11-06T18:58:49.893Z"
+        "careers": []
     }
 }
